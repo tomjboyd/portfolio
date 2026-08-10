@@ -1,0 +1,35 @@
+---
+import { techStack } from "@/data/profile";
+import SectionHeader from "@/components/SectionHeader.astro";
+import TechIcon from "@/components/TechIcon.astro";
+---
+
+<section id="stack">
+  <div class="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
+    <SectionHeader index="02" eyebrow="Toolkit" title="Tech stack" />
+    <div
+      class="reveal overflow-hidden rounded-lg border border-border bg-card shadow-sm"
+    >
+      <dl class="divide-y divide-border">
+        {
+          techStack.map((group) => (
+            <div class="grid gap-3 px-4 py-4 sm:grid-cols-[13rem_1fr] sm:gap-6 sm:px-6">
+              <dt class="flex gap-2 font-mono text-[0.72rem] uppercase tracking-wider text-muted-foreground">
+                <span class="size-2.5 mt-1 rounded-full bg-signal" />
+                {group.group}
+              </dt>
+              <dd class="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span class="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground">
+                    <TechIcon name={item} class="size-3.5" />
+                    {item}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</section>

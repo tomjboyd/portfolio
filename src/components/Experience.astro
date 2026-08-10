@@ -1,0 +1,75 @@
+---
+import { education, experience } from "@/data/profile";
+import SectionHeader from "@/components/SectionHeader.astro";
+---
+
+<section id="experience" class="border-b border-border bg-secondary/30">
+  <div class="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
+    <SectionHeader index="01" eyebrow="Career" title="Experience" />
+    <ol class="space-y-12">
+      {
+        experience.map((job) => (
+          <li class="reveal grid gap-x-8 gap-y-4 sm:grid-cols-[9.5rem_1fr]">
+            <div class="sm:pt-1">
+              <p class="font-mono text-xs text-muted-foreground">
+                {job.period}
+              </p>
+              {job.current && (
+                <span class="mt-2 inline-flex items-center gap-1.5 font-mono text-[0.7rem] text-signal">
+                  <span class="size-1.5 rounded-full bg-signal" />
+                  current
+                </span>
+              )}
+            </div>
+
+            <div class="relative border-l border-border pl-7 sm:pl-8">
+              <span
+                class="absolute -left-[5px] top-1.5 size-2.5 rounded-full border-2 border-background bg-foreground"
+                aria-hidden="true"
+              />
+              <h3 class="font-display text-xl font-semibold tracking-tight">
+                {job.company}
+              </h3>
+              <p class="mt-0.5 text-sm text-muted-foreground">
+                <span class="text-foreground">{job.role}</span>
+                {job.context && <span> · {job.context}</span>}
+              </p>
+
+              {job.bullets.length > 0 && (
+                <ul class="mt-4 space-y-3">
+                  {job.bullets.map((b) => (
+                    <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                      <span class="mt-2 size-1 shrink-0 rounded-full bg-signal" />
+                      <span>
+                        <span class="font-medium text-foreground">
+                          {b.label}
+                        </span>
+                        <span aria-hidden="true"> — </span>
+                        {b.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))
+      }
+      <li class="reveal grid gap-x-8 gap-y-2 sm:grid-cols-[8.5rem_1fr]">
+        <p class="font-mono text-xs text-muted-foreground sm:pt-1">
+          {education.period}
+        </p>
+        <div class="relative border-l border-border pl-7 sm:pl-8">
+          <span
+            class="absolute -left-[5px] top-1.5 size-2.5 rounded-full border-2 border-background bg-muted-foreground"
+            aria-hidden="true"></span>
+          <p class="eyebrow mb-1.5">Education</p>
+          <p class="font-medium leading-snug">{education.degree}</p>
+          <p class="mt-0.5 text-sm text-muted-foreground">
+            {education.institution}
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+{
+  "name": "thomas-boyd-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio for Thomas Boyd - Front-end Engineer",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "lint": "eslint . --max-warnings 0 && echo Lint passed - 0 problems",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource-variable/bricolage-grotesque": "latest",
+    "@fontsource-variable/geist": "latest",
+    "@fontsource-variable/geist-mono": "latest",
+    "astro": "^5.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "^4.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.0.0",
+    "eslint": "^10.8.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^17.9.0",
+    "lint-staged": "^17.3.0",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "simple-git-hooks": "^2.13.1",
+    "simple-icons": "^16.28.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.66.0"
+  },
+  "packageManager": "pnpm@10.34.5",
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,astro}": "eslint --fix --max-warnings 0",
+    "*.{js,mjs,cjs,ts,mts,cts,astro,css,json,md}": "prettier --write"
+  }
+}

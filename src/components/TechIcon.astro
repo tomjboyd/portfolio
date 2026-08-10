@@ -1,0 +1,94 @@
+---
+import type { SimpleIcon } from "simple-icons";
+import {
+  siClaude,
+  siDocker,
+  siFedora,
+  siGit,
+  siGooglechrome,
+  siJavascript,
+  siJira,
+  siLinear,
+  siN8n,
+  siNodedotjs,
+  siNpm,
+  siReact,
+  siReactquery,
+  siRuby,
+  siStyledcomponents,
+  siTypescript,
+  siWebpack,
+} from "simple-icons";
+
+interface Props {
+  name: string;
+  class?: string;
+}
+
+// Playwright and VSCode have no simple-icons entry, so they stay unmapped.
+const icons: Record<string, SimpleIcon> = {
+  TypeScript: siTypescript,
+  JavaScript: siJavascript,
+  Ruby: siRuby,
+  React: siReact,
+  "React Query": siReactquery,
+  "Styled Components / SCSS": siStyledcomponents,
+  Docker: siDocker,
+  Webpack: siWebpack,
+  "Node.js": siNodedotjs,
+  "npm/Yarn": siNpm,
+  Git: siGit,
+  "Claude Code / GitHub Copilot": siClaude,
+  "Linear MCP": siLinear,
+  n8n: siN8n,
+  Jira: siJira,
+  Linear: siLinear,
+  "Chrome DevTools": siGooglechrome,
+  "React Developer Tools": siReact,
+  "Fedora Linux": siFedora,
+};
+
+// Outline glyphs for entries with no brand mark.
+const genericIcons: Record<string, string> = {
+  "CI/CD (Tests & Linting)": `<path d="M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8" />`,
+};
+
+const { name, class: className = "size-3.5" } = Astro.props;
+const icon = icons[name];
+const generic = !icon ? genericIcons[name] : undefined;
+
+// Near-black brand colours are unreadable on the ink background.
+function legible(hex: string): string {
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b < 60 ? "currentColor" : `#${hex}`;
+}
+---
+
+{
+  icon && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill={legible(icon.hex)}
+      class={className}
+      aria-hidden="true"
+      set:html={`<path d="${icon.path}" />`}
+    />
+  )
+}
+{
+  generic && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      aria-hidden="true"
+      set:html={generic}
+    />
+  )
+}

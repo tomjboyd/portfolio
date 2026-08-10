@@ -1,0 +1,65 @@
+---
+import { hero, person } from "@/data/profile";
+import { buttonVariants } from "@/components/ui/button";
+import Icon from "@/components/Icon.astro";
+import TechIcon from "@/components/TechIcon.astro";
+
+const meta = [`${person.location} · Remote`];
+---
+
+<section id="top" class="relative overflow-hidden border-b border-border">
+  <div
+    class="relative mx-auto max-w-4xl px-5 pb-10 pt-10 sm:px-8 sm:pt-12 lg:pb-14 lg:pt-16"
+  >
+    <div class="reveal">
+      <h1
+        class="font-display text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
+      >
+        {person.name}
+      </h1>
+      <p class="mt-3 font-display text-xl font-medium text-signal sm:text-2xl">
+        {person.role}
+      </p>
+      <p class="font-display text-base text-signal sm:text-lg">
+        {person.subRole}
+      </p>
+      <p class="mt-4 font-mono text-xs text-muted-foreground">
+        {meta.join(" · ")}
+      </p>
+      <div class="mt-6 space-y-4">
+        {
+          hero.blurb.map((para) => (
+            <p class="text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {para}
+            </p>
+          ))
+        }
+      </div>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="#contact" class={buttonVariants({ size: "lg" })}>
+          Get in touch
+          <Icon name="mail" class="size-4" />
+        </a>
+        <a
+          href="#experience"
+          class={buttonVariants({ variant: "outline", size: "lg" })}
+        >
+          View experience
+        </a>
+      </div>
+    </div>
+    <div class="reveal mt-10 border-t border-border pt-5 sm:mt-12">
+      <p class="eyebrow">core stack</p>
+      <ul class="mt-3.5 flex flex-wrap gap-2">
+        {
+          hero.coreStack.map((tech) => (
+            <li class="inline-flex items-center gap-2 rounded-md border border-border bg-card/70 px-3 py-1.5">
+              <TechIcon name={tech} class="size-4 shrink-0" />
+              <span class="font-mono text-xs text-foreground/90">{tech}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

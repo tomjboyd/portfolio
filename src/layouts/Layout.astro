@@ -1,0 +1,116 @@
+---
+import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
+import "@/styles/globals.css";
+import { site, person, education } from "@/data/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.title, description = site.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogImage = new URL("/og.svg", Astro.site ?? site.url).href;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: person.name,
+  jobTitle: person.role,
+  url: site.url,
+  email: `mailto:${person.email}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Milton Keynes",
+    addressCountry: "GB",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: education.institution,
+  },
+  knowsAbout: [
+    "Front-end architecture",
+    "Design systems",
+    "JavaScript",
+    "TypeScript",
+    "Software migration",
+    "Continuous integration",
+  ],
+  ...(person.links.linkedin || person.links.github
+    ? { sameAs: [person.links.linkedin, person.links.github].filter(Boolean) }
+    : {}),
+};
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={person.name} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="theme-color" content="#0e0f12" />
+
+    <script is:inline>
+      // Must run before first paint - see the html.js rules in globals.css.
+      document.documentElement.classList.add("js");
+    </script>
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
+    >
+      Skip to content
+    </a>
+    <slot />
+
+    <script is:inline>
+      (function () {
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        const els = document.querySelectorAll(".reveal");
+        if (reduce || !("IntersectionObserver" in window)) {
+          els.forEach((el) => el.classList.add("in"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries
+              .filter((entry) => entry.isIntersecting)
+              .forEach((entry, i) => {
+                entry.target.style.setProperty("--reveal-delay", i * 90 + "ms");
+                entry.target.classList.add("in");
+                io.unobserve(entry.target);
+              });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+        );
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>

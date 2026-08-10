@@ -1,0 +1,23 @@
+---
+import { personal } from "@/data/profile";
+import SectionHeader from "@/components/SectionHeader.astro";
+---
+
+<section id="personal">
+  <div class="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
+    <SectionHeader index="04" eyebrow="Personal" title={personal.heading} />
+    <p class="reveal max-w-3xl text-base leading-relaxed text-muted-foreground">
+      {personal.body}
+    </p>
+    <p
+      class="reveal mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground"
+    >
+      {personal.skills}
+    </p>
+    <p
+      class="reveal mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground"
+    >
+      {personal.aviation}
+    </p>
+  </div>
+</section>

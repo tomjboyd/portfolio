@@ -1,0 +1,16 @@
+---
+import { person } from "@/data/profile";
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border">
+  <div
+    class="mx-auto flex max-w-4xl flex-col items-start justify-between gap-4 px-5 py-8 font-mono text-xs text-muted-foreground sm:flex-row sm:items-center sm:px-8"
+  >
+    <p>© {year} {person.name}</p>
+    <p class="flex items-center gap-2">
+      <span class="size-1.5 rounded-full bg-signal"></span>
+      Built with Astro · Tailwind · shadcn/ui
+    </p>
+  </div>
+</footer>
