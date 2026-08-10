@@ -19,7 +19,7 @@
     "@fontsource-variable/bricolage-grotesque": "latest",
     "@fontsource-variable/geist": "latest",
     "@fontsource-variable/geist-mono": "latest",
-    "astro": "^5.2.0",
+    "astro": "^7.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.0.1",
