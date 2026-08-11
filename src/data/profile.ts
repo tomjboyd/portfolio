@@ -42,7 +42,7 @@ export const personal = {
   skills:
     "I consider myself a fairly skilled self taught mechanic, I enjoy the satisfaction of taking in a broken motorbike and methodically figuring out and fixing the issue. Years later I discovered the book; Zen and the Art of Motorcycle Maintenance, which brilliantly summed up my love of the mechanical world.",
   aviation:
-    "One of my first loves was aviation, my dad being an aircraft engineer meant I had the privledge of the odd weekend joining him at work. Although I didn't follow his career path I do have a healthy hanger of RC model aircraft, on which I've been perfecting the integration of autonmous flight controller systems for years.",
+    "One of my first loves was aviation, my dad being an aircraft engineer meant I had the privilege of the odd weekend joining him at work. Although I didn't follow his career path I do have a healthy hangar of RC model aircraft, on which I've been perfecting the integration of autonomous flight controller systems for years.",
 };
 
 export const experience = [
@@ -203,10 +203,10 @@ export const projectsIntro =
   "A set of independent products I build and run outside of work. These were produced with one goal in mind, testing the breadth and pitfalls of an AI-first workflow.";
 
 export const projectsScope =
-  "Having the freedom to direct the product gave me freedom to consider my own set of standards; performance, accessability, modern CI/CD tooling and analytics.";
+  "Having the freedom to direct the product gave me freedom to consider my own set of standards; performance, accessibility, modern CI/CD tooling and analytics.";
 
 export const projectsLimitations =
-  "I had to fight a lot of bloat in the early stages, being product with unlimited scope can go to your head! I found AI highly variable in it's ambitions so I've moved to a more granular workflow to introduce features slower with more oversight.";
+  "I had to fight a lot of bloat in the early stages, being product with unlimited scope can go to your head! I found AI highly variable in its ambitions so I've moved to a more granular workflow to introduce features slower with more oversight.";
 
 export const projects = [
   {
