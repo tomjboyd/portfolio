@@ -6,7 +6,6 @@
   "description": "Personal portfolio for Thomas Boyd - Front-end Engineer",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -19,7 +18,7 @@
     "@fontsource-variable/bricolage-grotesque": "latest",
     "@fontsource-variable/geist": "latest",
     "@fontsource-variable/geist-mono": "latest",
-    "astro": "^5.2.0",
+    "astro": "^7.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.0.1",
@@ -39,7 +38,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "simple-git-hooks": "^2.13.1",
     "simple-icons": "^16.28.0",
-    "typescript": "^5.7.0",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.66.0"
   },
   "packageManager": "pnpm@10.34.5",
