@@ -14,7 +14,7 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/bricolage-grotesque": "latest",
     "@fontsource-variable/geist": "latest",
     "@fontsource-variable/geist-mono": "latest",
